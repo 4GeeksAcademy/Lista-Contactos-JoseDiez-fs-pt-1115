@@ -1,16 +1,25 @@
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
+import { useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { crearAgenda } from "../services/servicesAPI.js";
+import { crearContacto } from "../services/servicesAPI.js";
+import { traerContactos } from "../services/servicesAPI.js";
+import { ContactList } from "../components/ContactList.jsx";
+
+
+
 
 export const Home = () => {
 
-  const {store, dispatch} =useGlobalReducer()
+	const { store, dispatch } = useGlobalReducer();
+
+	useState(() => {
+		crearAgenda()
+	}, [])
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-		</div>
-	);
-}; 
+
+		<ContactList />
+
+	)
+}
